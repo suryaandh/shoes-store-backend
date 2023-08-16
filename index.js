@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const productRouter = require('./routes/products')
 const authRouter = require('./routes/auth')
 const userRouter = require('./routes/users')
+const orderRouter = require('./routes/orders')
 const port = 3000
 
 dotenv.config()
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }))
 
 app.use('/api/products', productRouter)
 app.use('/api/', authRouter)
+app.use('/api/orders/', orderRouter)
 app.use('/api/users/', userRouter)
 
 
