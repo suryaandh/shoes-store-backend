@@ -11,7 +11,7 @@ module.exports = {
 
       if (cart) {
         const existingProduct = cart.products.find(
-          (Product) => productsControllers.cartItem.toString() === cartItem
+          (product) => productsControllers.cartItem.toString() === cartItem
         );
 
         if (existingProduct) {
@@ -37,6 +37,8 @@ module.exports = {
     }
 
   },
+
+
   getCart: async (req, res) => {
     const userId = req.user.id;
 
@@ -47,8 +49,9 @@ module.exports = {
       res.status(500).json(error);
     }
   },
+
   deleteCartItem: async (req, res) => {
-    const cartItem = req.params.cartItem;
+    const cartItemId = req.params.cartItem;
 
     try {
       const updateCart = await Cart.findOneAndUpdate(
